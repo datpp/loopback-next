@@ -46,9 +46,9 @@ jobs:
       - name: Run tests
         run: faketty npm test --ignore-scripts
       - name: Run tests1
-        run: faketty npm test1 --ignore-scripts
+        run: faketty npm run test1 --ignore-scripts
       - name: Run tests2
-        run: faketty npm test2 --ignore-scripts
+        run: faketty npm run test2 --ignore-scripts
 
 #  test-benchmark:
 #    name: Test Benchmark
