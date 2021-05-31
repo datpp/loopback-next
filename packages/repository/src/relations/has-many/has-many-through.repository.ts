@@ -114,7 +114,7 @@ export interface HasManyThroughRepository<
   /**
    * Remove all association to an existing target model instance
    * @param options
-   * @return A promise which resolves to null
+   * @return A promise which resolves to void
    */
   unlinkAll(
     options?: Options & {
