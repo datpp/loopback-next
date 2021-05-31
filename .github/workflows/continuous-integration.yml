@@ -24,7 +24,8 @@ jobs:
           - os: macos-latest
             node-version: 14 # LTS
       fail-fast: false
-    runs-on: ${{ matrix.os }}
+#    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
