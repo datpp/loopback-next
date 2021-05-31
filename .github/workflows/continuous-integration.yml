@@ -20,9 +20,9 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node-version: [14, 16]
-        include:
-          - os: macos-latest
-            node-version: 14 # LTS
+#        include:
+#          - os: macos-latest
+#            node-version: 14 # LTS
       fail-fast: false
 #    runs-on: ${{ matrix.os }}
     runs-on: self-hosted
@@ -42,7 +42,7 @@ jobs:
         run: npm run build
       - uses: Yuri6037/Action-FakeTTY@v1.1
       - name: Run tests
-        run: faketty npm test --ignore-scripts
+        run: faketty npm test
 
 #  test-benchmark:
 #    name: Test Benchmark
