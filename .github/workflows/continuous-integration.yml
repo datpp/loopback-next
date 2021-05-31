@@ -45,10 +45,6 @@ jobs:
       - uses: Yuri6037/Action-FakeTTY@v1.1
       - name: Run tests
         run: faketty npm test --ignore-scripts
-      - name: Run tests1
-        run: faketty npm run test1 --ignore-scripts
-      - name: Run tests2
-        run: faketty npm run test2 --ignore-scripts
 
 #  test-benchmark:
 #    name: Test Benchmark
