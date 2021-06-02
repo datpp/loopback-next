@@ -152,16 +152,16 @@ skipIf(
       });
     });
 
-    after(cleanup);
-    /** @this {Mocha.Context} */
-    function cleanup() {
-      // Increase the timeout to accommodate slow CI build machines
-      this.timeout(30 * 1000);
-
-      process.chdir(rootDir);
-      build.clean(['node', 'run-clean', appProps.outdir]);
-      process.chdir(process.cwd());
-    }
+    // after(cleanup);
+    // /** @this {Mocha.Context} */
+    // function cleanup() {
+    //   // Increase the timeout to accommodate slow CI build machines
+    //   this.timeout(30 * 1000);
+    //
+    //   process.chdir(rootDir);
+    //   build.clean(['node', 'run-clean', appProps.outdir]);
+    //   process.chdir(process.cwd());
+    // }
   },
 );
 
