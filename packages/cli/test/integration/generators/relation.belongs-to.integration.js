@@ -17,12 +17,12 @@ const testUtils = require('../../test-utils');
 // Test Sandbox
 const MODEL_APP_PATH = 'src/models';
 const CONTROLLER_PATH = 'src/controllers';
-const REPOSITORY_APP_PATH = 'src/repositories';
+// const REPOSITORY_APP_PATH = 'src/repositories';
 const sandbox = new TestSandbox(path.resolve(__dirname, '../.sandbox'));
 
 const sourceFileName = 'order.model.ts';
 const controllerFileName = 'order-customer.controller.ts';
-const repositoryFileName = 'order.repository.ts';
+// const repositoryFileName = 'order.repository.ts';
 // speed up tests by avoiding reading docs
 const options = {
   sourceModelPrimaryKey: 'id',
@@ -237,59 +237,59 @@ describe('lb4 relation', /** @this {Mocha.Suite} */ function () {
     }
   });
 
-  context('checks generated source class repository', () => {
-    const promptArray = [
-      {
-        relationType: 'belongsTo',
-        sourceModel: 'Order',
-        destinationModel: 'Customer',
-      },
-      {
-        relationType: 'belongsTo',
-        sourceModel: 'Order',
-        destinationModel: 'Customer',
-        relationName: 'custom_name',
-        registerInclusionResolver: false,
-      },
-    ];
-
-    const sourceClassnames = ['Order', 'Order'];
-
-    promptArray.forEach(function (multiItemPrompt, i) {
-      describe('answers ' + JSON.stringify(multiItemPrompt), () => {
-        suite(multiItemPrompt, i);
-      });
-    });
-
-    function suite(multiItemPrompt, i) {
-      before(async function runGeneratorWithAnswers() {
-        await sandbox.reset();
-        await testUtils
-          .executeGenerator(generator)
-          .inDir(sandbox.path, () =>
-            testUtils.givenLBProject(sandbox.path, {
-              additionalFiles: SANDBOX_FILES,
-            }),
-          )
-          .withOptions(options)
-          .withPrompts(multiItemPrompt);
-      });
-
-      it(
-        'generates ' +
-          sourceClassnames[i] +
-          ' repository file with different inputs',
-        async () => {
-          const sourceFilePath = path.join(
-            sandbox.path,
-            REPOSITORY_APP_PATH,
-            repositoryFileName,
-          );
-
-          assert.file(sourceFilePath);
-          expectFileToMatchSnapshot(sourceFilePath);
-        },
-      );
-    }
-  });
+  // context('checks generated source class repository', () => {
+  //   const promptArray = [
+  //     {
+  //       relationType: 'belongsTo',
+  //       sourceModel: 'Order',
+  //       destinationModel: 'Customer',
+  //     },
+  //     {
+  //       relationType: 'belongsTo',
+  //       sourceModel: 'Order',
+  //       destinationModel: 'Customer',
+  //       relationName: 'custom_name',
+  //       registerInclusionResolver: false,
+  //     },
+  //   ];
+  //
+  //   const sourceClassnames = ['Order', 'Order'];
+  //
+  //   promptArray.forEach(function (multiItemPrompt, i) {
+  //     describe('answers ' + JSON.stringify(multiItemPrompt), () => {
+  //       suite(multiItemPrompt, i);
+  //     });
+  //   });
+  //
+  //   function suite(multiItemPrompt, i) {
+  //     before(async function runGeneratorWithAnswers() {
+  //       await sandbox.reset();
+  //       await testUtils
+  //         .executeGenerator(generator)
+  //         .inDir(sandbox.path, () =>
+  //           testUtils.givenLBProject(sandbox.path, {
+  //             additionalFiles: SANDBOX_FILES,
+  //           }),
+  //         )
+  //         .withOptions(options)
+  //         .withPrompts(multiItemPrompt);
+  //     });
+  //
+  //     it(
+  //       'generates ' +
+  //         sourceClassnames[i] +
+  //         ' repository file with different inputs',
+  //       async () => {
+  //         const sourceFilePath = path.join(
+  //           sandbox.path,
+  //           REPOSITORY_APP_PATH,
+  //           repositoryFileName,
+  //         );
+  //
+  //         assert.file(sourceFilePath);
+  //         expectFileToMatchSnapshot(sourceFilePath);
+  //       },
+  //     );
+  //   }
+  // });
 });
