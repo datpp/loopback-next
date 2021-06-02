@@ -65,8 +65,8 @@ skipIf(process.env.CI == null, describe, 'app-generator (SLOW)', () => {
 
     return new Promise((resolve, reject) => {
       build
-        .runShell('faketty', ['npm', 'test'], {
-          // Disable stdout
+        .runShell('npm', ['test'], {
+          // // Disable stdout
           stdio: [process.stdin, 'ignore', process.stderr],
           cwd: appProps.outdir,
         })
@@ -77,16 +77,16 @@ skipIf(process.env.CI == null, describe, 'app-generator (SLOW)', () => {
     });
   });
 
-  after(cleanup);
-  /** @this {Mocha.Context} */
-  function cleanup() {
-    // Increase the timeout to accommodate slow CI build machines
-    this.timeout(30 * 1000);
-
-    process.chdir(rootDir);
-    build.clean(['node', 'run-clean', appProps.outdir]);
-    process.chdir(process.cwd());
-  }
+  // after(cleanup);
+  // /** @this {Mocha.Context} */
+  // function cleanup() {
+  //   // Increase the timeout to accommodate slow CI build machines
+  //   this.timeout(30 * 1000);
+  //
+  //   process.chdir(rootDir);
+  //   build.clean(['node', 'run-clean', appProps.outdir]);
+  //   process.chdir(process.cwd());
+  // }
 });
 
 /**
