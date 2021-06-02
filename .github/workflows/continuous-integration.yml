@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16]
+        node-version: [14, 16]
 #        include:
 #          - os: macos-latest
 #            node-version: 14 # LTS
@@ -44,8 +44,7 @@ jobs:
           npm run build
       - uses: Yuri6037/Action-FakeTTY@v1.1
       - name: Run tests
-        run: |
-          faketty npm run test3 --ignore-scripts
+        run: faketty npm run test3 --ignore-scripts
 
 #  test-benchmark:
 #    name: Test Benchmark
